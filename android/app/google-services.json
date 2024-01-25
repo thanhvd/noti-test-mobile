@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "425679623702",
+    "project_id": "notitestmobile-a112c",
+    "storage_bucket": "notitestmobile-a112c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425679623702:android:6ad41fef18489b5a7c8737",
+        "android_client_info": {
+          "package_name": "com.notitestmobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCq_VkMVapG7mpJMs37LnQCzuJobemCZsg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
