@@ -1,4 +1,3 @@
-import React from 'react';
 import messaging from '@react-native-firebase/messaging';
 import {PermissionsAndroid, Platform} from 'react-native';
 import {logNotificationEvent} from '../services/logger';
