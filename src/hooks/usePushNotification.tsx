@@ -1,8 +1,11 @@
 import messaging from '@react-native-firebase/messaging';
 import {PermissionsAndroid, Platform} from 'react-native';
 import {logNotificationEvent} from '../services/logger';
+import {useGlobalStore} from '../stores/global';
 
 const usePushNotification = () => {
+  const {setFcmToken} = useGlobalStore();
+
   /**
    * requestUserPermissionHandler: this function basically asks the user for permissions to receive push notifications.
    * In iOS is required you ask them, but on Android API level 32 and below, you do not need to request user permission, you have to ask in API level 33+.
@@ -30,11 +33,16 @@ const usePushNotification = () => {
    * getFCMToken: with this function we get the device push token of the current device.
    */
   const getFCMToken = async () => {
-    const fcmToken = await messaging().getToken();
-    if (fcmToken) {
-      console.log('Your Firebase Token is:', fcmToken);
-    } else {
-      console.log('Failed', 'No token received');
+    try {
+      const fcmToken = await messaging().getToken();
+      if (fcmToken) {
+        setFcmToken(fcmToken);
+        console.log('Your Firebase Token is:', fcmToken);
+      } else {
+        console.log('Failed', 'No token received');
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 
