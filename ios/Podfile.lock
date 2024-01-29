@@ -1117,6 +1117,11 @@ PODS:
     - FirebaseCoreExtension (= 10.20.0)
     - React-Core
     - RNFBApp
+  - RNNotifee (7.8.2):
+    - React-Core
+    - RNNotifee/NotifeeCore (= 7.8.2)
+  - RNNotifee/NotifeeCore (7.8.2):
+    - React-Core
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
 
@@ -1174,6 +1179,7 @@ DEPENDENCIES:
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
+  - "RNNotifee (from `../node_modules/@notifee/react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1294,6 +1300,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBMessaging:
     :path: "../node_modules/@react-native-firebase/messaging"
+  RNNotifee:
+    :path: "../node_modules/@notifee/react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1309,7 +1317,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 558b1da7d65afeb996fd5c814332f013234ece4e
   FirebaseMessaging: 06c414a21b122396a26847c523d5c370f8325df5
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  glog: 035f1e36e53b355cf70f6434d161b36e7d21fecd
+  glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   GoogleDataTransport: 57c22343ab29bc686febbf7cbb13bad167c2d8fe
   GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34
   hermes-engine: b361c9ef5ef3cda53f66e195599b47e1f84ffa35
@@ -1360,9 +1368,10 @@ SPEC CHECKSUMS:
   RNCClipboard: 60fed4b71560d7bfe40e9d35dea9762b024da86d
   RNFBApp: a4f5b074984cf612e4c97d68b42be690c59e2638
   RNFBMessaging: 1e7415390ae579c5949505a0709686a2de8a47e5
+  RNNotifee: 8e2d3df3f0e9ce8f5d1fe4c967431138190b6175
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: e64aa65de36c0832d04e8c7bd614396c77a80047
 
 PODFILE CHECKSUM: 2a0c5c4a1e7bc1a1ff4147c7c310e09a82ba6aa5
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.12.1
