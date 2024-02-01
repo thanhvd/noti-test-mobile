@@ -2,6 +2,7 @@
  * @format
  */
 
+import React from 'react';
 import {AppRegistry, Platform} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import notifee, {EventType} from '@notifee/react-native';
