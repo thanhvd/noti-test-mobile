@@ -1,61 +1,47 @@
-import React, {useEffect} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
-import Clipboard from '@react-native-clipboard/clipboard';
-import usePushNotification from './hooks/usePushNotification';
-import {useGlobalStore} from './stores/global';
+import React, {useEffect, useState} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import LoginScreen from './screens/login';
+import HomeScreen from './screens/home';
+import RegisterScreen from './screens/register';
+import NotiScreen from './screens/notification';
+import ConfigNotiScreen from './screens/confignoti';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const App = () => {
-  const {fcmToken} = useGlobalStore();
-  const {
-    requestUserPermission,
-    getFCMToken,
-    listenToBackgroundNotifications,
-    listenToForegroundNotifications,
-    onNotificationOpenedAppFromBackground,
-    onNotificationOpenedAppFromQuit,
-  } = usePushNotification();
+const Stack = createNativeStackNavigator();
+
+function App() {
+
+  const [isLogin, setIsLogin] = useState('');
 
   useEffect(() => {
-    const listenToNotifications = () => {
-      try {
-        getFCMToken();
-        requestUserPermission();
-        onNotificationOpenedAppFromQuit();
-        listenToBackgroundNotifications();
-        listenToForegroundNotifications();
-        onNotificationOpenedAppFromBackground();
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    listenToNotifications();
+    const getLoginStatus = async() => {
+      setIsLogin(await AsyncStorage.getItem('login'));
+    }
+    getLoginStatus();
+    console.log('Logi status: ', isLogin);
   }, []);
-
-  const copyToClipboard = () => {
-    Clipboard.setString(fcmToken);
-  };
-
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <Text
-        style={{
-          fontSize: 20,
-          marginBottom: 40,
-        }}>
-        Push Notification Demo APP
-      </Text>
-      <TouchableOpacity onPress={copyToClipboard}>
-        <Text>Click here to copy FCM Token to Clipboard</Text>
-        <Text>FCM Token: {fcmToken}</Text>
-      </TouchableOpacity>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="Noti" component={NotiScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="ConfigNoti" component={ConfigNotiScreen} options={{headerShown: false}}/>
+      {/* {isLogin== null ? (
+        <>
+          <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}}/>
+          <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false}}/>
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="Home" component={HomeScreen}/>
+        </>
+      )} */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
+}
 
 export default App;

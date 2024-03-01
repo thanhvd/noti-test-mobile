@@ -32,7 +32,8 @@ messaging().setBackgroundMessageHandler(async remoteMessage => {
     description: 'A new message arrived! (QUIT)',
     platform: Platform.OS,
   });
-});
+  }
+);
 
 // Check if app was launched in the background and conditionally render null if so
 function HeadlessCheck({isHeadless}) {
